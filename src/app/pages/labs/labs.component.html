@@ -25,16 +25,22 @@
     ( change - Cambia despues de que se detecta un cambio en la caja de texto +
     reactividad de objeto ) Resultado = {{ name() }}
   </p>
-  <input type="text" [value]="person().name" (change)="changeHandler($event)" />
+  <input
+    type="text"
+    [value]="person().name"
+    (change)="changeHandler($event)"
+    placeholder="Escribir nombre"
+  />
 
   <p>
     ( KeyDown - Detecta cambios de pulsaciones ) Resultado =
-    {{ input ? input : "asda" }}
+    {{ input ? input : "Vacio" }}
   </p>
   <input
     type="text"
     [value]="person().name"
     (keydown)="keyDownHandler($event)"
+    placeholder="Escribir nombre"
   />
 
   <p>(KeyDown shift + t - Evento lanzado por medio de combinación de teclas)</p>
@@ -56,4 +62,10 @@
     <p *ngSwitchCase="'Deivi'">Bien, eres Deivi</p>
     <p *ngSwitchCase="'Juan'">Bien, eres Juan</p>
   </div>
+
+  <hr />
+  <h2>Nueva metodologia</h2>
+
+  <input type="color" [formControl]="colorCtrl" />
+  <p>Color: {{ colorCtrl.value }}</p>
 </div>
