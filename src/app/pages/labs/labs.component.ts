@@ -9,12 +9,24 @@ import { Component, signal } from '@angular/core';
   styleUrl: './labs.component.css',
 })
 export class LabsComponent {
-
   // Variables quemadas
-  test = 'Test';
-  list = ['Instalar el Angular CLI', 'Crear proyecto', 'Crear componentes'];
+  test: string = 'Test';
+  // list: Array<string> = [
+  //   'Instalar el Angular CLI',
+  //   'Crear proyecto',
+  //   'Crear componentes',
+  // ];
+
+  list = signal([
+    'Instalar el Angular CLI',
+    'Crear proyecto',
+    'Crear componentes',
+  ]);
+
+  input: string = '';
 
   // Modalidad Reactiva
+  // name = signal('Deivi');
   name = signal('Deivi');
   age = signal(20);
   img = signal('https://w3schools.com/howto/img_avatar.png');
@@ -39,11 +51,15 @@ export class LabsComponent {
   changeHandler = (event: Event) => {
     const input = event.target as HTMLInputElement;
     const newValue = input.value;
-    this.name.set(newValue)
+    this.name.set(newValue);
   };
 
   keyDownHandler = (event: KeyboardEvent) => {
     const input = event.target as HTMLInputElement;
-    console.log(input.value);
+    this.input = input.value;
+  };
+
+  clickCombinationHandler = () => {
+    alert('Combinación Shift + T');
   };
 }
